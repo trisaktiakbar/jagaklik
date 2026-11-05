@@ -57,8 +57,14 @@ new class extends Component {
 
             </button>
 
+            <button type="button" id="jagaklik-install-button" id="jagaklik-install-button"
+                class="hidden items-center justify-center gap-2 rounded-xl border border-blue-600 bg-transparent px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-600 hover:text-white border-blue-600 text-blue-600 dark:hover:bg-blue-600  dark:hover:border-blue-600 hover:cursor-pointer">
+                <i class="fa-solid fa-download"></i>
+                <span>Install JagaKlik</span>
+            </button>
+
             <a wire:navigate href="{{ route('guest.check-url.index') }}"
-                class="hidden items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 sm:inline-flex">
+                class="items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 sm:inline-flex">
 
                 <i class="fa-solid fa-expand"></i> Periksa URL
 
@@ -113,6 +119,14 @@ new class extends Component {
         const root = document.documentElement;
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Theme Toggle
+        |--------------------------------------------------------------------------
+        */
 
         function updateThemeIcon() {
             const dark = root.classList.contains('dark');
@@ -140,11 +154,99 @@ new class extends Component {
 
         updateThemeIcon();
 
-        document.getElementById('mobileMenuButton').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+        /*
+        |--------------------------------------------------------------------------
+        | Mobile Navigation
+        |--------------------------------------------------------------------------
+        */
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | PWA Installation
+        |--------------------------------------------------------------------------
+        */
+
+        let deferredInstallPrompt = null;
+
+        function isJagaKlikInstalled() {
+            return window.matchMedia('(display-mode: standalone)').matches ||
+                window.navigator.standalone === true;
+        }
+
+        function updateJagaKlikInstallButton() {
+            const buttons = document.querySelectorAll(
+                '#jagaklik-install-button'
+            );
+
+            const shouldShow = Boolean(deferredInstallPrompt) &&
+                !isJagaKlikInstalled();
+
+            buttons.forEach(button => {
+                button.classList.toggle('hidden', !shouldShow);
+                button.classList.toggle('inline-flex', shouldShow);
+            });
+        }
+
+        window.addEventListener('beforeinstallprompt', event => {
+            event.preventDefault();
+
+            deferredInstallPrompt = event;
+
+            updateJagaKlikInstallButton();
+        });
+
+        document.addEventListener('click', async event => {
+            const button = event.target.closest(
+                '#jagaklik-install-button'
+            );
+
+            if (!button || !deferredInstallPrompt) {
+                return;
+            }
+
+            const installPrompt = deferredInstallPrompt;
+
+            deferredInstallPrompt = null;
+
+            updateJagaKlikInstallButton();
+
+            try {
+                await installPrompt.prompt();
+
+                const {
+                    outcome
+                } = await installPrompt.userChoice;
+
+                if (outcome === 'accepted') {
+                    console.log('JagaKlik berhasil diinstal.');
+                } else {
+                    console.log('Instalasi JagaKlik dibatalkan.');
+                }
+            } catch (error) {
+                console.error('Gagal menginstal JagaKlik:', error);
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            deferredInstallPrompt = null;
+
+            updateJagaKlikInstallButton();
+
+            console.log('JagaKlik sudah terinstal.');
+        });
+
+        document.addEventListener('livewire:navigated', () => {
+            updateJagaKlikInstallButton();
         });
     </script>
 @endscript

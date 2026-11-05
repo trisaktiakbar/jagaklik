@@ -5,10 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b1220">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/guest/img/favicon.png') }}">
 
     <x-guest.seo-meta-component :title="$meta['title'] ?? null" :description="$meta['description'] ?? null" :author="$meta['author'] ?? null" :keywords="$meta['keywords'] ?? null"
         :image="$meta['image'] ?? null" :url="$meta['url'] ?? null" :robots="$meta['robots'] ?? null" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/guest/img/favicon.png') }}">
+
+    <link rel="manifest" href="{{ asset('manifest.webmanifest') }}">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="JagaKlik">
+    <link rel="apple-touch-icon" href="{{ asset('assets/guest/img/pwa-192x192.png') }}">
+
 
     <script>
         document.addEventListener('livewire:navigated', function() {
