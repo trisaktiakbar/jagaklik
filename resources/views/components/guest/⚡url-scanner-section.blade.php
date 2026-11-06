@@ -1,19 +1,20 @@
 <?php
 
-use App\Services\GoogleSafeBrowsingService;
-use App\Services\UrlhausService;
-use App\Services\OpenPhishService;
-use App\Services\ThreatFoxService;
-use App\Services\VirusTotalService;
+use App\Models\UrlReport;
+use App\Models\UrlScan;
 use App\Services\AlienVaultOtxService;
+use App\Services\GoogleSafeBrowsingService;
 use App\Services\IpApiService;
-use App\Services\WebTrustScoreService;
+use App\Services\OpenPhishService;
 use App\Services\PhishuntService;
+use App\Services\ThreatFoxService;
+use App\Services\UrlhausService;
+use App\Services\UrlScannerService;
+use App\Services\VirusTotalService;
+use App\Services\WebTrustScoreService;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
-use App\Models\UrlReport;
-use App\Models\UrlScan;
 
 new class extends Component {
     public string $url = '';
@@ -132,11 +133,36 @@ new class extends Component {
     }
 
 
-    public function scan(GoogleSafeBrowsingService $googleSafeBrowsing, UrlhausService $urlhaus, OpenPhishService $openphish, ThreatFoxService $threatfox, VirusTotalService $virusTotal, AlienVaultOtxService $alienVault, IpApiService $ipApi, WebTrustScoreService $webTrustScore, PhishuntService $phishunt): void
+    public function scan(UrlScannerService $scanner): void
     {
         $this->resetValidation();
 
-        $this->reset(['scannedUrl', 'googleResult', 'urlhausResult', 'openphishResult', 'threatfoxResult', 'virusTotalResult', 'alienVaultResult', 'serverLocation', 'webTrustScoreResult', 'webTrustScoreScanId', 'webTrustScoreError', 'webTrustScorePending', 'savedScanId', 'phishuntResult', 'phishuntError', 'googleError', 'urlhausError', 'openphishError', 'threatfoxError', 'virusTotalError', 'alienVaultError', 'serverLocationError', 'hasScanned', 'communityReports']);
+        $this->reset([
+            'scannedUrl',
+            'googleResult',
+            'urlhausResult',
+            'openphishResult',
+            'threatfoxResult',
+            'virusTotalResult',
+            'alienVaultResult',
+            'serverLocation',
+            'webTrustScoreResult',
+            'webTrustScoreScanId',
+            'webTrustScoreError',
+            'webTrustScorePending',
+            'savedScanId',
+            'phishuntResult',
+            'phishuntError',
+            'googleError',
+            'urlhausError',
+            'openphishError',
+            'threatfoxError',
+            'virusTotalError',
+            'alienVaultError',
+            'serverLocationError',
+            'hasScanned',
+            'communityReports',
+        ]);
 
         $validated = Validator::make(
             ['url' => trim($this->url)],
@@ -152,159 +178,43 @@ new class extends Component {
 
         $this->scannedUrl = $validated['url'];
 
-        $domain = strtolower(parse_url($this->scannedUrl, PHP_URL_HOST) ?? '');
+        $result = $scanner->scan($this->scannedUrl);
 
-        /*
-        |--------------------------------------------------------------------------
-        | Community Reports
-        |--------------------------------------------------------------------------
-        */
+        $this->communityReports = $result['community_reports'];
 
-        $this->communityReports = UrlReport::query()
-            ->where(function ($query) use ($domain) {
-                $query->where('url', $this->scannedUrl)->orWhere('domain_url', $domain);
-            })
-            ->latest()
-            ->limit(10)
-            ->get()
-            ->toArray();
+        $this->googleResult = $result['google_result'];
+        $this->googleError = $result['google_error'];
 
-        /*
-        |--------------------------------------------------------------------------
-        | Google Safe Browsing
-        |--------------------------------------------------------------------------
-        */
+        $this->urlhausResult = $result['urlhaus_result'];
+        $this->urlhausError = $result['urlhaus_error'];
 
-        try {
-            $this->googleResult = $googleSafeBrowsing->check($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
+        $this->openphishResult = $result['openphish_result'];
+        $this->openphishError = $result['openphish_error'];
 
-            $this->googleError = 'Google Safe Browsing tidak dapat dihubungi saat ini.';
-        }
+        $this->threatfoxResult = $result['threatfox_result'];
+        $this->threatfoxError = $result['threatfox_error'];
 
-        /*
-        |--------------------------------------------------------------------------
-        | URLhaus
-        |--------------------------------------------------------------------------
-        */
+        $this->virusTotalResult = $result['virustotal_result'];
+        $this->virusTotalError = $result['virustotal_error'];
 
-        try {
-            $this->urlhausResult = $urlhaus->check($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
+        $this->alienVaultResult = $result['alienvault_result'];
+        $this->alienVaultError = $result['alienvault_error'];
 
-            $this->urlhausError = 'URLhaus tidak dapat dihubungi saat ini.';
-        }
+        $this->serverLocation = $result['server_location'];
+        $this->serverLocationError = $result['server_location_error'];
 
-        /*
-        |--------------------------------------------------------------------------
-        | OpenPhish
-        |--------------------------------------------------------------------------
-        */
+        $this->webTrustScoreResult = $result['webtrustscore_result'];
+        $this->webTrustScoreScanId = $result['webtrustscore_scan_id'];
+        $this->webTrustScorePending = $result['webtrustscore_pending'];
+        $this->webTrustScoreError = $result['webtrustscore_error'];
 
-        try {
-            $this->openphishResult = $openphish->check($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->openphishError = 'OpenPhish tidak dapat dihubungi saat ini.';
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | ThreatFox
-        |--------------------------------------------------------------------------
-        */
-
-        try {
-            $this->threatfoxResult = $threatfox->check($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->threatfoxError = 'ThreatFox tidak dapat dihubungi saat ini.';
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | VirusTotal
-        |--------------------------------------------------------------------------
-        */
-
-        try {
-            $this->virusTotalResult = $virusTotal->check($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->virusTotalError = 'VirusTotal tidak dapat dihubungi saat ini.';
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | AlienVault OTX
-        |--------------------------------------------------------------------------
-        */
-
-        try {
-            $this->alienVaultResult = $alienVault->check($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->alienVaultError = 'AlienVault OTX tidak dapat dihubungi saat ini.';
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | IP-API: Server Location & Network Information
-        |--------------------------------------------------------------------------
-        */
-
-        try {
-            $this->serverLocation = $ipApi->lookupWebsite($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->serverLocationError = 'Informasi lokasi server tidak dapat diperoleh saat ini.';
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | WebTrustScore: Website Reputation
-        |--------------------------------------------------------------------------
-        */
-
-        $this->startWebTrustScoreScan($webTrustScore);
-
-        /*
-        |--------------------------------------------------------------------------
-        | Phishunt: Phishing Intelligence
-        |--------------------------------------------------------------------------
-        */
-
-        try {
-            $this->phishuntResult = $phishunt->analyze($this->scannedUrl);
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->phishuntError = 'Phishunt tidak dapat dihubungi saat ini.';
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Save Scan History
-        |--------------------------------------------------------------------------
-        */
+        $this->phishuntResult = $result['phishunt_result'];
+        $this->phishuntError = $result['phishunt_error'];
 
         $this->hasScanned = true;
 
         $this->saveScanHistory();
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Start WebTrustScore Scan
-    |--------------------------------------------------------------------------
-    */
 
     private function startWebTrustScoreScan(WebTrustScoreService $service): void
     {
