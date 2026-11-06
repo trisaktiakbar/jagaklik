@@ -29,21 +29,7 @@ new class extends Component {
             'meta' => [
                 'title' => 'Laporkan URL - Laporkan Tautan Mencurigakan',
                 'description' => 'Temukan tautan mencurigakan atau berbahaya? Laporkan URL melalui JagaKlik untuk membantu pengguna lain mengenali phishing, penipuan online, malware, dan ancaman digital.',
-                'keywords' => implode(', ', [
-                    'Laporkan URL',
-                    'Laporkan Link',
-                    'Lapor Link Penipuan',
-                    'Laporkan Link Penipuan',
-                    'Lapor Link Phishing',
-                    'Laporkan Link Phishing',
-                    'Laporan URL Mencurigakan',
-                    'Laporan Website Berbahaya',
-                    'Pelaporan Phishing',
-                    'Pelaporan Penipuan',
-                    'Pelaporan Website',
-                    'Laporan Ancaman Siber',
-                    'Keamanan Digital',
-                ]),
+                'keywords' => implode(', ', ['Laporkan URL', 'Laporkan Link', 'Lapor Link Penipuan', 'Laporkan Link Penipuan', 'Lapor Link Phishing', 'Laporkan Link Phishing', 'Laporan URL Mencurigakan', 'Laporan Website Berbahaya', 'Pelaporan Phishing', 'Pelaporan Penipuan', 'Pelaporan Website', 'Laporan Ancaman Siber', 'Keamanan Digital']),
                 'robots' => 'index, follow',
                 'url' => route('guest.url-report.create'),
             ],
@@ -240,35 +226,35 @@ new class extends Component {
 
                 {{-- Success Message --}}
                 @if ($successMessage)
-                <div class="flex gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-500/20 dark:bg-emerald-500/5"
-                    role="status">
-                    <div
-                        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
+                    <div class="flex gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-500/20 dark:bg-emerald-500/5"
+                        role="status">
+                        <div
+                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
 
-                    <div>
-                        <h3 class="text-sm font-semibold text-emerald-900 dark:text-emerald-300">
-                            Laporan Berhasil Dikirim
-                        </h3>
+                        <div>
+                            <h3 class="text-sm font-semibold text-emerald-900 dark:text-emerald-300">
+                                Laporan Berhasil Dikirim
+                            </h3>
 
-                        <p class="mt-1 text-sm leading-6 text-emerald-800/80 dark:text-emerald-300/70">
-                            {{ $successMessage }}
-                        </p>
+                            <p class="mt-1 text-sm leading-6 text-emerald-800/80 dark:text-emerald-300/70">
+                                {{ $successMessage }}
+                            </p>
+                        </div>
                     </div>
-                </div>
                 @endif
 
                 {{-- General Error Message --}}
                 @error('form')
-                <div class="flex gap-3 rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-500/20 dark:bg-red-500/5"
-                    role="alert">
-                    <i class="fa-solid fa-circle-exclamation mt-0.5 text-red-500"></i>
+                    <div class="flex gap-3 rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-500/20 dark:bg-red-500/5"
+                        role="alert">
+                        <i class="fa-solid fa-circle-exclamation mt-0.5 text-red-500"></i>
 
-                    <p class="text-sm leading-6 text-red-700 dark:text-red-400">
-                        {{ $message }}
-                    </p>
-                </div>
+                        <p class="text-sm leading-6 text-red-700 dark:text-red-400">
+                            {{ $message }}
+                        </p>
+                    </div>
                 @enderror
 
                 {{-- URL --}}
@@ -290,7 +276,7 @@ new class extends Component {
                     </div>
 
                     @error('url')
-                    <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                        <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                     @enderror
 
                     <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
@@ -331,7 +317,7 @@ new class extends Component {
                     </div>
 
                     @error('category')
-                    <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                        <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -348,7 +334,7 @@ new class extends Component {
                         class="w-full resize-y rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm leading-6 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-[#0b1220] dark:text-white dark:placeholder:text-slate-500"></textarea>
 
                     @error('description')
-                    <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                        <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -379,7 +365,7 @@ new class extends Component {
                     </label>
 
                     @error('evidence')
-                    <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                        <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                     @enderror
 
                     <div wire:loading wire:target="evidence" class="mt-2 text-xs text-blue-600 dark:text-blue-400">
@@ -388,22 +374,22 @@ new class extends Component {
                     </div>
 
                     @if ($evidence)
-                    <div
-                        class="mt-3 flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-slate-700">
                         <div
-                            class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
-                            <i class="fa-solid fa-image"></i>
-                        </div>
+                            class="mt-3 flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-slate-700">
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
+                                <i class="fa-solid fa-image"></i>
+                            </div>
 
-                        <div class="min-w-0 flex-1">
-                            <p class="truncate text-sm font-medium text-slate-800 dark:text-slate-200">
-                                {{ $evidence->getClientOriginalName() }}
-                            </p>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">
-                                {{ number_format($evidence->getSize() / 1024, 0) }} KB
-                            </p>
+                            <div class="min-w-0 flex-1">
+                                <p class="truncate text-sm font-medium text-slate-800 dark:text-slate-200">
+                                    {{ $evidence->getClientOriginalName() }}
+                                </p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">
+                                    {{ number_format($evidence->getSize() / 1024, 0) }} KB
+                                </p>
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
 
@@ -442,7 +428,7 @@ new class extends Component {
                             </div>
 
                             @error('reporter_name')
-                            <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                                <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -465,7 +451,7 @@ new class extends Component {
                             </div>
 
                             @error('reporter_email')
-                            <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                                <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -504,10 +490,10 @@ new class extends Component {
 
         {{-- Bottom Information --}}
         <div class="mt-6 text-center">
-            <a wire:navigate href="{{ route('guest.home.index') }}"
+            <a wire:navigate href="{{ route('guest.url-report.index') }}"
                 class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">
                 <i class="fa-solid fa-arrow-left text-xs"></i>
-                Kembali ke halaman utama
+                Kembali ke daftar laporan
             </a>
         </div>
 
@@ -516,16 +502,16 @@ new class extends Component {
 
 
 @script
-<script>
-    $wire.on('scroll-to-form', () => {
-        const formWrapper = document.getElementById('form-wrapper');
+    <script>
+        $wire.on('scroll-to-form', () => {
+            const formWrapper = document.getElementById('form-wrapper');
 
-        if (formWrapper) {
-            formWrapper.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-</script>
+            if (formWrapper) {
+                formWrapper.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    </script>
 @endscript

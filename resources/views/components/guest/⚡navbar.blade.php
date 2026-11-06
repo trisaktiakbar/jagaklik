@@ -38,9 +38,9 @@ new class extends Component {
                 class="nav-link text-sm {{ Route::is('guest.url-report.index') ? 'font-semibold text-blue-600' : 'font-medium text-slate-600 dark:text-slate-300' }}">Laporan
                 Komunitas</a>
 
-            <a wire:navigate href="{{ route('guest.url-report.create') }}"
-                class="nav-link text-sm {{ Route::is('guest.url-report.create') ? 'font-semibold text-blue-600' : 'font-medium text-slate-600 dark:text-slate-300' }}">Laporkan
-                URL</a>
+            <a wire:navigate href="{{ route('guest.threat-database.index') }}"
+                class="nav-link text-sm {{ Route::is('guest.threat-database.*') ? 'font-semibold text-blue-600' : 'font-medium text-slate-600 dark:text-slate-300' }}">Database
+                Ancaman</a>
             <a wire:navigate href="{{ route('guest.about.index') }}"
                 class="nav-link text-sm {{ Route::is('guest.about.*') ? 'font-semibold text-blue-600' : 'font-medium text-slate-600 dark:text-slate-300' }}">Tentang
                 Kami</a>
@@ -57,16 +57,18 @@ new class extends Component {
 
             </button>
 
-            <button type="button" id="jagaklik-install-button" id="jagaklik-install-button"
+            <button type="button" id="jagaklik-install-button" id="jagaklik-install-button" title="Install JagaKlik"
                 class="hidden items-center justify-center gap-2 rounded-xl border border-blue-600 bg-transparent px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-600 hover:text-white border-blue-600 text-blue-600 dark:hover:bg-blue-600  dark:hover:border-blue-600 hover:cursor-pointer">
                 <i class="fa-solid fa-download"></i>
-                <span>Install JagaKlik</span>
+                <span class="hidden sm:inline">Install JagaKlik</span>
             </button>
 
             <a wire:navigate href="{{ route('guest.check-url.index') }}"
-                class="items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 sm:inline-flex">
+                class="items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 sm:inline-flex"
+                title="Periksa URL">
 
-                <i class="fa-solid fa-expand"></i> Periksa URL
+                <i class="fa-solid fa-expand"></i>
+                <span class="hidden sm:inline">Periksa URL</span>
 
             </a>
 
@@ -98,9 +100,9 @@ new class extends Component {
                 class="{{ Route::is('guest.url-report.index') ? 'text-blue-600' : 'text-slate-600 dark:text-slate-300' }}"">Laporan
                 Komunitas</a>
 
-            <a wire:navigate href="{{ route('guest.url-report.create') }}"
-                class="{{ Route::is('guest.url-report.create') ? 'text-blue-600' : 'text-slate-600 dark:text-slate-300' }}"">Laporkan
-                URL</a>
+            <a wire:navigate href="{{ route('guest.threat-database.index') }}"
+                class="{{ Route::is('guest.threat-database.*') ? 'text-blue-600' : 'text-slate-600 dark:text-slate-300' }}"">Database
+                Ancaman</a>
             <a wire:navigate href="{{ route('guest.about.index') }}"
                 class="{{ Route::is('guest.about.*') ? 'text-blue-600' : 'text-slate-600 dark:text-slate-300' }}"">Tentang
                 Kami</a>

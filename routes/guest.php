@@ -18,6 +18,11 @@ Route::livewire('/threat/{type}/show', 'pages::guest.threat.show')
     ->name('guest.threat.show');
 
 Route::livewire(
+    '/threat-database',
+    'pages::guest.threat-database.index'
+)->name('guest.threat-database.index');
+
+Route::livewire(
     '/insight/{slug}',
     'pages::guest.insight.show'
 )->name('guest.insight.show');
