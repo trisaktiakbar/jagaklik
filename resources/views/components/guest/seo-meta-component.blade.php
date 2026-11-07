@@ -19,7 +19,7 @@
 <meta property="og:title" content="{{ $title ? $title . ' | ' : '' }}{{ config('app.name') }}">
 <meta property="og:description" content="{{ $description }}">
 
-<meta property="og:image" content="{{ $image ?? asset('assets/guest/img/seo/og-default.png') }}">
+<meta property="og:image" content="{{ $image ?? asset('assets/guest/img/seo/og-default.jpg') }}">
 <meta property="og:locale" content="id_ID">
 
 @if ($url)

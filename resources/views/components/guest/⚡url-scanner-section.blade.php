@@ -216,42 +216,7 @@ new class extends Component {
         $this->saveScanHistory();
     }
 
-    private function startWebTrustScoreScan(WebTrustScoreService $service): void
-    {
-        try {
-            $response = $service->scan($this->scannedUrl);
-
-            $data = $response['data'] ?? [];
-
-            if ($service->isPending($response)) {
-                $scanId = $data['scanId'] ?? null;
-
-                if (!$scanId) {
-                    $this->webTrustScoreError = 'WebTrustScore belum memberikan ID pemeriksaan.';
-
-                    return;
-                }
-
-                $this->webTrustScoreScanId = (string) $scanId;
-
-                $this->webTrustScorePending = true;
-
-                return;
-            }
-
-            $this->webTrustScoreResult = $data;
-        } catch (\Throwable $e) {
-            report($e);
-
-            $this->webTrustScoreError = 'WebTrustScore tidak dapat dihubungi saat ini.';
-        }
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Poll WebTrustScore Result
-    |--------------------------------------------------------------------------
-    */
+    
 
     public function pollWebTrustScore(WebTrustScoreService $service): void
     {
