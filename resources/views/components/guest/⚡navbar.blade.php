@@ -12,20 +12,22 @@ new class extends Component {
 
     <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navigasi utama">
 
-        <a wire:navigate href="{{ route('guest.home.index') }}" class="flex items-center gap-3" aria-label="Beranda">
+        <a wire:navigate href="{{ route('guest.home.index') }}" class="flex items-center gap-1 md:gap-3"
+            aria-label="Beranda">
 
             <span
-                class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/25">
+                class="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg md:rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/25">
 
                 <i class="fa-solid fa-shield-halved"></i>
 
             </span>
 
-            <span class="text-xl font-extrabold tracking-tight">Jaga<span class="text-blue-600">Klik</span></span>
+            <span class="text-lg md:text-xl font-extrabold tracking-tight">Jaga<span
+                    class="text-blue-600">Klik</span></span>
 
         </a>
 
-        <div class="hidden items-center gap-8 lg:flex">
+        <div class="hidden items-center gap-8 md:gap-4 xl:flex">
 
             <a wire:navigate href="{{ route('guest.home.index') }}"
                 class="nav-link text-sm {{ Route::is('guest.home.*') ? 'font-semibold text-blue-600' : 'font-medium text-slate-600 dark:text-slate-300' }}">Beranda</a>
@@ -73,7 +75,7 @@ new class extends Component {
             </a>
 
             <button id="mobileMenuButton"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 dark:border-white/10 dark:text-slate-200 lg:hidden"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 dark:border-white/10 dark:text-slate-200 xl:hidden"
                 aria-label="Buka menu">
 
                 <i class="fa-solid fa-bars"></i>
@@ -85,7 +87,7 @@ new class extends Component {
     </nav>
 
     <div id="mobileMenu"
-        class="hidden border-t border-slate-200 bg-white px-5 py-4 dark:border-white/10 dark:bg-ink-900 lg:hidden">
+        class="hidden border-t border-slate-200 bg-white px-5 py-4 dark:border-white/10 dark:bg-ink-900 xl:hidden">
 
         <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm font-semibold">
 
