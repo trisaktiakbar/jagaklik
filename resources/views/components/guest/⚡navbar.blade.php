@@ -49,7 +49,7 @@ new class extends Component {
 
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 sm:gap-2">
 
             <button id="themeToggle"
                 class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:border-blue-300 hover:text-blue-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-blue-400 hover:cursor-pointer"
@@ -60,7 +60,7 @@ new class extends Component {
             </button>
 
             <button type="button" id="jagaklik-install-button" id="jagaklik-install-button" title="Install JagaKlik"
-                class="hidden items-center justify-center gap-2 rounded-xl border border-blue-600 bg-transparent px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-600 hover:text-white border-blue-600 text-blue-600 dark:hover:bg-blue-600  dark:hover:border-blue-600 hover:cursor-pointer">
+                class="hidden items-center justify-center gap-2 rounded-xl border border-blue-600 bg-transparent h-10 w-10 sm:w-auto px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-600 hover:text-white border-blue-600 text-blue-600 dark:hover:bg-blue-600  dark:hover:border-blue-600 hover:cursor-pointer">
                 <i class="fa-solid fa-download"></i>
                 <span class="hidden sm:inline">Install JagaKlik</span>
             </button>
