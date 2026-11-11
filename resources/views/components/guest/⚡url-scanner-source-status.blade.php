@@ -67,7 +67,6 @@ new class extends Component {
 
     <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
 
-        {{-- Google Safe Browsing --}}
         <div
             class="flex flex-col gap-2 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-700">
 
@@ -111,7 +110,6 @@ new class extends Component {
 
         </div>
 
-        {{-- URLhaus --}}
         <div
             class="flex flex-col gap-2 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-700">
 
@@ -155,7 +153,6 @@ new class extends Component {
 
         </div>
 
-        {{-- OpenPhish --}}
         <div
             class="flex flex-col gap-2 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-700">
 
@@ -199,7 +196,6 @@ new class extends Component {
 
         </div>
 
-        {{-- ThreatFox --}}
         <div
             class="flex flex-col gap-2 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-700">
 
@@ -244,7 +240,6 @@ new class extends Component {
 
         </div>
 
-        {{-- VirusTotal --}}
         <div
             class="flex flex-col gap-2 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-700">
 

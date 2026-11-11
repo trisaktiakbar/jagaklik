@@ -49,7 +49,6 @@ new class extends Component {
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-            {{-- Total Pemindaian --}}
             <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-ink-850">
 
                 <div class="flex items-center justify-between">
@@ -74,7 +73,6 @@ new class extends Component {
 
             </div>
 
-            {{-- Ancaman Terdeteksi --}}
             <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-ink-850">
 
                 <div class="flex items-center justify-between">
@@ -99,7 +97,6 @@ new class extends Component {
 
             </div>
 
-            {{-- URL Dilaporkan --}}
             <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-ink-850">
 
                 <div class="flex items-center justify-between">
@@ -124,7 +121,6 @@ new class extends Component {
 
             </div>
 
-            {{-- URL Mencurigakan --}}
             <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-ink-850">
 
                 <div class="flex items-center justify-between">

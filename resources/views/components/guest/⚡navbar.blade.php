@@ -14,17 +14,13 @@ new class extends Component {
 
         <a wire:navigate href="{{ route('guest.home.index') }}" class="flex items-center gap-1 md:gap-3"
             aria-label="Beranda">
-
             <span
                 class="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg md:rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/25">
-
                 <i class="fa-solid fa-shield-halved"></i>
-
             </span>
 
             <span class="text-lg md:text-xl font-extrabold tracking-tight">Jaga<span
                     class="text-blue-600">Klik</span></span>
-
         </a>
 
         <div class="hidden items-center gap-8 md:gap-4 xl:flex">
@@ -126,12 +122,6 @@ new class extends Component {
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
 
-        /*
-        |--------------------------------------------------------------------------
-        | Theme Toggle
-        |--------------------------------------------------------------------------
-        */
-
         function updateThemeIcon() {
             const dark = root.classList.contains('dark');
 
@@ -158,12 +148,6 @@ new class extends Component {
 
         updateThemeIcon();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Mobile Navigation
-        |--------------------------------------------------------------------------
-        */
-
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
@@ -173,12 +157,6 @@ new class extends Component {
                 mobileMenu.classList.add('hidden');
             });
         });
-
-        /*
-        |--------------------------------------------------------------------------
-        | PWA Installation
-        |--------------------------------------------------------------------------
-        */
 
         let deferredInstallPrompt = null;
 

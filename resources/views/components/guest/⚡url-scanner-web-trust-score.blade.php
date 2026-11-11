@@ -13,7 +13,6 @@ new class extends Component {
 
 <div class="overflow-hidden rounded-2xl border border-blue-200 bg-white dark:border-blue-400/20 dark:bg-[#101a2b]">
 
-    {{-- Header Komponen --}}
     <div class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 dark:border-slate-700/70">
 
         <div class="flex items-center gap-3">
@@ -45,7 +44,6 @@ new class extends Component {
 
     <div class="p-5">
 
-        {{-- Sedang Diproses --}}
         @if ($pending)
 
             <div class="flex flex-col items-center justify-center py-7 text-center">
@@ -71,8 +69,6 @@ new class extends Component {
                 </span>
 
             </div>
-
-            {{-- Terjadi Kesalahan --}}
         @elseif ($error)
             <div
                 class="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-400/20 dark:bg-amber-400/10">
@@ -90,8 +86,6 @@ new class extends Component {
                 </div>
 
             </div>
-
-            {{-- Hasil Pemeriksaan --}}
         @elseif ($result)
             @php
                 $score = $result['score'] ?? null;
@@ -130,7 +124,6 @@ new class extends Component {
 
                 <div class="grid gap-5 sm:grid-cols-2">
 
-                    {{-- Skor Reputasi --}}
                     <div class="flex flex-col justify-center">
 
                         <p class="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">
@@ -159,7 +152,6 @@ new class extends Component {
 
                     </div>
 
-                    {{-- Persentase Skor --}}
                     <div class="flex flex-col justify-center">
 
                         <div class="flex items-center justify-between text-xs">
@@ -207,7 +199,6 @@ new class extends Component {
                     </div>
                 @endif
 
-                {{-- Waktu Pemeriksaan --}}
                 @if (isset($result['scannedAt']))
                     <div class="mt-3 flex items-center justify-between text-xs">
 
@@ -222,7 +213,6 @@ new class extends Component {
                     </div>
                 @endif
 
-                {{-- Versi Model --}}
                 @if (isset($result['modelVersion']))
                     <div class="mt-3 flex items-center justify-between text-xs">
 
@@ -247,8 +237,6 @@ new class extends Component {
                 </div>
 
             @endif
-
-            {{-- Belum Ada Hasil --}}
         @else
             <div class="py-6 text-center">
 
@@ -262,7 +250,6 @@ new class extends Component {
 
         @endif
 
-        {{-- Keterangan --}}
         <div class="mt-5 border-t border-slate-100 pt-4 dark:border-slate-700/70">
 
             <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">

@@ -13,7 +13,6 @@ new class extends Component {
     <div
         class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
 
-        {{-- Header --}}
         <div class="flex items-center justify-between gap-4 border-b border-slate-200 px-5 py-4 dark:border-slate-700">
             <div class="flex items-center gap-3">
                 <div
@@ -38,7 +37,6 @@ new class extends Component {
             </span>
         </div>
 
-        {{-- Content --}}
         <div class="p-5">
 
             @if (count($communityReports) > 0)
@@ -48,7 +46,6 @@ new class extends Component {
                         <div wire:key="community-report-{{ $report['id'] ?? $loop->index }}" x-data="{ expanded: false }"
                             class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
 
-                            {{-- Report Summary --}}
                             <div class="p-4">
 
                                 <div class="flex flex-wrap items-start justify-between gap-3">
@@ -78,7 +75,6 @@ new class extends Component {
 
                                 </div>
 
-                                {{-- Report URL --}}
                                 <div class="mt-4">
                                     <p class="mb-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
                                         URL yang Dilaporkan
@@ -90,7 +86,6 @@ new class extends Component {
                                     </div>
                                 </div>
 
-                                {{-- Show Detail Button --}}
                                 <button type="button" @click="expanded = !expanded" :aria-expanded="expanded"
                                     class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-500/50 dark:hover:bg-blue-500/10 dark:hover:text-blue-400">
                                     <span x-text="expanded ? 'Sembunyikan Detail' : 'Lihat Detail Laporan'"></span>
@@ -101,7 +96,6 @@ new class extends Component {
 
                             </div>
 
-                            {{-- Expanded Details --}}
                             <div x-show="expanded" x-transition:enter="transition ease-out duration-200"
                                 x-transition:enter-start="opacity-0 -translate-y-2"
                                 x-transition:enter-end="opacity-100 translate-y-0"
@@ -111,7 +105,6 @@ new class extends Component {
 
                                 <div class="space-y-4">
 
-                                    {{-- Domain --}}
                                     <div>
                                         <p class="mb-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
                                             Domain Utama
@@ -124,7 +117,6 @@ new class extends Component {
                                         </div>
                                     </div>
 
-                                    {{-- Full URL --}}
                                     <div>
                                         <p class="mb-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
                                             URL Lengkap
@@ -136,7 +128,6 @@ new class extends Component {
                                         </div>
                                     </div>
 
-                                    {{-- Description --}}
                                     @if (!empty($report['description']))
                                         <div>
                                             <p class="mb-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -150,7 +141,6 @@ new class extends Component {
                                         </div>
                                     @endif
 
-                                    {{-- Reporter --}}
                                     @if (!empty($report['reporter_name']))
                                         <div>
                                             <p class="mb-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -165,7 +155,6 @@ new class extends Component {
                                         </div>
                                     @endif
 
-                                    {{-- Evidence --}}
                                     @if (!empty($report['evidence']))
                                         <div>
                                             <p class="mb-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -182,7 +171,6 @@ new class extends Component {
                                         </div>
                                     @endif
 
-                                    {{-- Report Date --}}
                                     <div class="border-t border-slate-200 pt-3 dark:border-slate-700">
                                         <p class="text-xs text-slate-500 dark:text-slate-400">
                                             <i class="fa-regular fa-calendar mr-1"></i>
@@ -201,7 +189,6 @@ new class extends Component {
                     @endforeach
                 </div>
 
-                {{-- Information --}}
                 <div
                     class="mt-4 flex items-start gap-2 rounded-xl bg-blue-50 p-3 text-xs leading-relaxed text-blue-700 dark:bg-blue-500/10 dark:text-blue-300">
                     <i class="fa-solid fa-circle-info mt-0.5"></i>
@@ -212,7 +199,6 @@ new class extends Component {
                     </p>
                 </div>
             @else
-                {{-- Empty State --}}
                 <div class="flex flex-col items-center justify-center py-10 text-center">
                     <div
                         class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500">

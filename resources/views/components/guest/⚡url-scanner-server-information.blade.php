@@ -91,7 +91,6 @@ new class extends Component {
             <div class="py-5 text-center">
 
                 <i class="fa-solid fa-server text-2xl text-slate-300 dark:text-slate-600"></i>
-
                 <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">
                     Informasi lokasi server belum tersedia.
                 </p>

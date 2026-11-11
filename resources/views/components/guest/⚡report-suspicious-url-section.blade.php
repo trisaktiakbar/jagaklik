@@ -19,26 +19,14 @@ new class extends Component {
             <div class="relative max-w-2xl"><span
                     class="inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-blue-300">Berpartisipasi</span>
 
-                <h2 class="mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl">
-                    Temukan tautan
+                <h2 class="mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl">Temukan tautan mencurigakan?</h2>
 
-                    mencurigakan?</h2>
-
-                <p class="mt-3 text-sm leading-7 text-slate-300">Bantu lindungi
-                    pengguna lain dengan
-
-                    melaporkan
-
-                    URL yang diduga berbahaya. Laporan dapat ditinjau untuk
-                    memperkaya informasi ancaman
-
-                    JagaKlik.</p>
-
+                <p class="mt-3 text-sm leading-7 text-slate-300">Bantu lindungi pengguna lain dengan melaporkan URL yang
+                    diduga berbahaya. Laporan dapat ditinjau untuk memperkaya informasi ancaman JagaKlik.</p>
             </div>
 
             <a wire:navigate href="{{ route('guest.url-report.create') }}"
                 class="relative inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-bold text-ink-950 transition hover:bg-blue-50">Laporkan
-
                 URL <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 
         </div>

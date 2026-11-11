@@ -11,7 +11,6 @@ new class extends Component {
 
     <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.4fr_.7fr_.7fr]">
 
-        {{-- Brand --}}
         <div>
             <a wire:navigate href="{{ route('guest.home.index') }}" class="inline-flex items-center gap-3">
                 <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
@@ -29,7 +28,6 @@ new class extends Component {
             </p>
         </div>
 
-        {{-- Navigasi --}}
         <div>
             <h3 class="text-xs font-bold uppercase tracking-wider">
                 Navigasi
@@ -78,7 +76,6 @@ new class extends Component {
 
     </div>
 
-    {{-- Copyright --}}
     <div
         class="mx-auto mt-10 flex max-w-7xl flex-col justify-between gap-3 border-t border-slate-200 pt-6  text-sm text-slate-400 dark:border-white/10 sm:flex-row">
 

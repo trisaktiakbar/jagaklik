@@ -82,7 +82,6 @@ new class extends Component {
 
 <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-white/10 dark:bg-[#101a2b]">
 
-    {{-- Header --}}
     <div
         class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 dark:border-white/10">
 
@@ -160,7 +159,6 @@ new class extends Component {
                 ];
             @endphp
 
-            {{-- Skor Risiko --}}
             <div class="grid gap-4 sm:grid-cols-2">
 
                 <div class="rounded-xl bg-slate-50 p-4 dark:bg-white/[0.03]">
@@ -223,7 +221,6 @@ new class extends Component {
 
             </div>
 
-            {{-- Catatan Basis Data Ancaman --}}
             <div class="mt-5">
                 <h4 class="mb-3 text-sm font-bold text-slate-800 dark:text-white">
                     <i class="fa-solid fa-database mr-2 text-blue-500"></i>
@@ -268,7 +265,6 @@ new class extends Component {
                 </div>
             </div>
 
-            {{-- Peniruan Identitas Merek --}}
             <div class="mt-5 rounded-xl border border-slate-200 p-4 dark:border-white/10">
 
                 <h4 class="text-sm font-bold text-slate-800 dark:text-white">
@@ -305,7 +301,6 @@ new class extends Component {
 
             </div>
 
-            {{-- Sumber Intelijen Eksternal --}}
             <div class="mt-5">
                 <h4 class="mb-3 text-sm font-bold text-slate-800 dark:text-white">
                     <i class="fa-solid fa-network-wired mr-2 text-blue-500"></i>
@@ -350,7 +345,6 @@ new class extends Component {
                 </p>
             </div>
 
-            {{-- Faktor Risiko --}}
             @if (count($why))
                 <div class="mt-5">
                     <h4 class="mb-3 text-sm font-bold text-slate-800 dark:text-white">
@@ -375,7 +369,6 @@ new class extends Component {
                 </div>
             @endif
 
-            {{-- Riwayat Domain --}}
             <div class="mt-5 rounded-xl border border-slate-200 p-4 dark:border-white/10">
                 <h4 class="text-sm font-bold text-slate-800 dark:text-white">
                     <i class="fa-solid fa-clock-rotate-left mr-2 text-blue-500"></i>
@@ -405,7 +398,6 @@ new class extends Component {
                 </div>
             </div>
 
-            {{-- Keterangan --}}
             <div
                 class="mt-5 flex items-start gap-3 rounded-xl bg-blue-50 p-4 text-xs leading-relaxed text-blue-800 dark:bg-blue-400/10 dark:text-blue-300">
                 <i class="fa-solid fa-circle-info mt-0.5"></i>

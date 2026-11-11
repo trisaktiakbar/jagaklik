@@ -18,7 +18,6 @@ new class extends Component {
 
     <div class="grid gap-3 sm:grid-cols-3">
 
-        {{-- Hosting --}}
         <div class="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
 
             <div class="flex items-center gap-2">
@@ -42,7 +41,6 @@ new class extends Component {
 
         </div>
 
-        {{-- Proxy --}}
         <div class="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
 
             <div class="flex items-center gap-2">
@@ -66,7 +64,6 @@ new class extends Component {
 
         </div>
 
-        {{-- Jaringan Seluler --}}
         <div class="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
 
             <div class="flex items-center gap-2">
@@ -91,7 +88,6 @@ new class extends Component {
 
     </div>
 
-    {{-- Perkiraan Koordinat --}}
     @if (isset($serverLocation['lat'], $serverLocation['lon']) &&
             is_numeric($serverLocation['lat']) &&
             is_numeric($serverLocation['lon']))
@@ -115,7 +111,6 @@ new class extends Component {
         </div>
     @endif
 
-    {{-- Informasi --}}
     <div class="mt-4 flex gap-3 rounded-xl bg-blue-50 p-3 dark:bg-blue-400/10">
 
         <i class="fa-solid fa-circle-info mt-0.5 text-blue-500"></i>

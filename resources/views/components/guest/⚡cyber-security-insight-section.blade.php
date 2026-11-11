@@ -84,9 +84,7 @@ new class extends Component {
                         class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-blue-600">Baca
 
                         selengkapnya <i class="fa-solid fa-arrow-right"></i></span>
-
                 </div>
-
             </a>
 
             <a wire:navigate href="{{ route('guest.insight.show', 'threat-intelligence') }}"

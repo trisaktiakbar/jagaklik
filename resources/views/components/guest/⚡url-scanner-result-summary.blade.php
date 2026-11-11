@@ -21,23 +21,17 @@ new class extends Component {
 <div class="rounded-2xl border p-5 sm:p-6 {{ $statusConfig['classes'] }}">
 
     <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
-
         <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl {{ $statusConfig['iconClasses'] }}">
             <i class="fa-solid {{ $statusConfig['icon'] }} text-2xl"></i>
         </div>
-
         <div class="flex-1">
-
             <div class="flex flex-wrap items-center gap-2">
-
                 <h3 class="text-lg font-bold {{ $statusConfig['titleClasses'] }}">
                     {{ $statusConfig['title'] }}
                 </h3>
-
                 <span class="rounded-full px-3 py-1 text-xs font-bold {{ $statusConfig['badgeClasses'] }}">
                     {{ $statusConfig['badge'] }}
                 </span>
-
             </div>
 
             <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">

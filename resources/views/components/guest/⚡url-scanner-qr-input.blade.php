@@ -4,7 +4,6 @@ use Livewire\Attributes\Modelable;
 use Livewire\Component;
 
 new class extends Component {
-
     #[Modelable]
     public $url = '';
 };
@@ -57,37 +56,27 @@ new class extends Component {
             </div>
 
             <div class="min-w-0 flex-1">
-
                 <p class="text-xs font-medium text-slate-500 dark:text-slate-400">
                     Gambar yang dipilih
                 </p>
-
                 <p class="mt-1 break-all text-sm font-semibold text-slate-800 dark:text-white" x-text="fileName"></p>
-
                 <div class="mt-3 flex flex-wrap items-center gap-2">
-
                     <span x-show="decoding"
                         class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-600 dark:bg-blue-400/10 dark:text-blue-400">
-
                         <i class="fa-solid fa-spinner fa-spin"></i>
                         Membaca QR Code...
-
                     </span>
 
                     <span x-show="decodedUrl && !decoding"
                         class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
-
                         <i class="fa-solid fa-circle-check"></i>
                         QR Code Berhasil Dibaca
-
                     </span>
 
                     <button type="button" @click="clearFile()"
                         class="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-400/10">
-
                         <i class="fa-solid fa-trash-can"></i>
                         Hapus Gambar
-
                     </button>
 
                 </div>
@@ -97,24 +86,18 @@ new class extends Component {
         </div>
 
         <div x-show="decodedUrl && !decoding" x-cloak class="mt-4 rounded-lg bg-emerald-50 p-3 dark:bg-emerald-400/10">
-
             <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
                 URL Berhasil Diekstrak
             </p>
-
             <p class="mt-1 break-all text-sm text-emerald-800 dark:text-emerald-300" x-text="decodedUrl"></p>
-
         </div>
 
     </div>
 
     <div x-show="errorMessage" x-cloak
         class="mt-4 flex gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 dark:border-rose-400/20 dark:bg-rose-400/10">
-
         <i class="fa-solid fa-circle-exclamation mt-0.5 text-rose-500"></i>
-
         <p class="text-sm leading-6 text-rose-700 dark:text-rose-300" x-text="errorMessage"></p>
-
     </div>
 
     <p class="mt-3 text-xs leading-5 text-slate-500 dark:text-slate-400">
